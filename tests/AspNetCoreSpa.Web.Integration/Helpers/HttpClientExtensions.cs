@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using AngleSharp.Dom.Html;
+using AngleSharp.Html.Dom;
 using Xunit;
 
 namespace AspNetCoreSpa.Web.Integration
