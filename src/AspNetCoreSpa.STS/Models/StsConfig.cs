@@ -16,5 +16,6 @@ namespace AspNetCoreSpa.STS.Models
         // specify the Windows authentication scheme being used
         public readonly string WindowsAuthenticationSchemeName = Microsoft.AspNetCore.Server.IISIntegration.IISDefaults.AuthenticationScheme;
         public TimeSpan RememberMeLoginDuration = TimeSpan.FromDays(30);
+        public string reCAPTCHA { get; set; }
     }
 }

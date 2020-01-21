@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '@app/shared';
+import { MatCardModule } from '@angular/material/card';
 import { VoteComponent } from './vote.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './vote.routes';
 
 
 
 @NgModule({
-  declarations: [VoteComponent],
+  declarations: [
+    VoteComponent,
+  ],
   imports: [
-    CommonModule
+    SharedModule,
+    MatCardModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class VoteModule { }

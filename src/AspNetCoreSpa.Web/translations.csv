@@ -3,6 +3,8 @@ app_title,AspNetCoreSpa,AspNetCoreSpa,fr-AspNetCoreSpa
 app_description,Single page application using aspnet core and angular,Single page application using aspnet core and angular,fr-Single page application using aspnet core and angular
 app_repo_url,https://github.com/asadsahi/aspnetcorespa,https://github.com/asadsahi/aspnetcorespa,https://github.com/asadsahi/aspnetcorespa
 app_nav_home,Home,Home,fr-Home
+app_nav_vote,Vote,Vote,vote
+app_nav_map,Map,Map,map
 app_nav_examples,Examples,Examples,fr-Examples
 app_nav_register,Register,Register,fr-Register
 app_nav_login,Login,Login,fr-Login

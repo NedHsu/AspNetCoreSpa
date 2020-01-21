@@ -5,5 +5,7 @@ import { PrivacyComponent } from '@app/components';
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full', data: { state: 'home' } },
   { path: 'examples', loadChildren: () => import('./+examples/examples.module').then(m => m.ExamplesModule) },
-  { path: 'privacy', component: PrivacyComponent }
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'vote', loadChildren: () => import('./vote/vote.module').then(m => m.VoteModule) },
+  { path: 'map', loadChildren: () => import('./map/map.module').then(m => m.MapModule) }
 ];

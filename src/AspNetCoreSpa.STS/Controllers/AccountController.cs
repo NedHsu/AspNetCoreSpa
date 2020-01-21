@@ -24,6 +24,8 @@ using Microsoft.AspNetCore.Authentication;
 using System.Security.Principal;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace AspNetCoreSpa.STS.Controllers
 {
@@ -99,6 +101,12 @@ namespace AspNetCoreSpa.STS.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginInputModel model, string button)
         {
+            var reCAPTCHA = await ReCAPTCHA(model.Token);
+            if (!reCAPTCHA.success)
+            {
+                _logger.LogWarning(2, reCAPTCHA.message);
+                return View("Lockout");
+            }
             if (button != "login")
             {
                 // the user clicked the "cancel" button
@@ -163,6 +171,27 @@ namespace AspNetCoreSpa.STS.Controllers
             // something went wrong, show form with error
             var vm = await BuildLoginViewModelAsync(model);
             return View(vm);
+        }
+
+        private async Task<(bool success, string message)> ReCAPTCHA(string token)
+        {
+            using(var client = new HttpClient())
+            {
+                var url = "https://www.google.com/recaptcha/api/siteverify";
+                var secret = _stsConfig.reCAPTCHA;
+                var request = await client.PostAsync($"{url}?secret={secret}&response={token}", null);
+                var JSONres = request.Content.ReadAsStringAsync().Result;
+                dynamic JSONdata = JObject.Parse(JSONres);
+                if (JSONdata.success != "true")
+                {
+                    return (false, "invalid token");
+                }
+                else if ((double)JSONdata.score < 0.5)
+                {
+                    return (false, $"{JSONdata.score} score less than 0.5");
+                }
+                return (true, JSONdata.score);
+            }
         }
 
         /*****************************************/

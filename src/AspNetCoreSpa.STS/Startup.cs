@@ -158,8 +158,8 @@ namespace AspNetCoreSpa.STS
                {
                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-                   options.ClientId = "476611152863-ltgqfk9jhq1vsenin5039n58ogkraltb.apps.googleusercontent.com";
-                   options.ClientSecret = "rSHvhgdOQUB4KMc5JS1alzhg";
+                   options.ClientId = "1090226158956-vvqpctbdbkl6hf53d7oola85in9laan8.apps.googleusercontent.com";
+                   options.ClientSecret = "tmwNqWQk4U2mYQDURlBnWpY7";
                })
                .AddOpenIdConnect("aad", "Login with Azure AD", options =>
                 {

@@ -13,5 +13,6 @@ namespace AspNetCoreSpa.STS.Models
 
         public bool RememberLogin { get; set; }
         public string ReturnUrl { get; set; }
+        public string Token { get; set; }
     }
 }
