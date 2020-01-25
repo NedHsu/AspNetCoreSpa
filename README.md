@@ -140,6 +140,27 @@ From powershell:
 - docker push registry.heroku.com/aspnetcorespa/web
   Note: There is a `deploy.heroku.ps1` script included with this project which automates above steps.
 
+# mongodb note
+
+### Docker [mongodb](https://hub.docker.com/_/mongo)
+
+```bash
+docker pull mongo
+```
+
+### Start a mongo server instance
+
+```bash
+docker run --name some-mongo -d mongo:tag
+```
+
+### excute bash / mongo admin
+
+```bash
+docker exec -it mongo-dev1 bash
+docker exec -it mongo-dev1 mongo admin
+```
+
 # Deploy to Azure as App Service
 
 Set-Item -path env:AzureAppPass -value passwordhere
